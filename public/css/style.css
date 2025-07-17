@@ -1,0 +1,22 @@
+/* Make the full page fill the height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Wrapper for full-page layout */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure main content grows and footer stays at bottom */
+.content-wrap {
+  flex: 1;
+}
+
+.imgage_shiv{
+  object-fit: cover;
+}
