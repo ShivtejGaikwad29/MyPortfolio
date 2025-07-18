@@ -5,6 +5,10 @@ const nodemailer = require("nodemailer");
 const Certificate = require("../Model/Certificate");
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+    res.redirect("/home"); // or: res.render("home");
+});
+
 router.get("/home",async (req,res)=>{
     res.render("home");
 });
