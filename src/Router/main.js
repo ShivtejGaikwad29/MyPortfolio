@@ -2,6 +2,7 @@ const express = require("express");
 const Project = require("../Model/Project");
 const Contact = require("../Model/Contact");
 const nodemailer = require("nodemailer");
+const Certificate = require("../Model/Certificate");
 const router = express.Router();
 
 router.get("/home",async (req,res)=>{
@@ -51,7 +52,7 @@ router.post("/process_form", async (req, res) => {
       }
     });
 
-    // 3. Email options
+    // 3. Email options 
     const mailOptions = {
       from: `"Portfolio Website" <${process.env.MY_EMAIL}>`,
       to: process.env.MY_EMAIL, // your email address to receive messages
@@ -76,4 +77,18 @@ router.post("/process_form", async (req, res) => {
   }
 });
 
+router.get("/certificates", async (req, res) => {
+  try {
+    const certificateinfo = await Certificate.find();
+
+    res.render("certificates", {
+      certificateinfo: certificateinfo,
+    });
+  } catch (error) {
+    console.error("Error fetching certificates:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+  
 module.exports = router 
